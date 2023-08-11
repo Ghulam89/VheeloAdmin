@@ -1,0 +1,13 @@
+.reviews .user_images {
+    border-radius: 50%;
+    transform: translate(0px , -44px);
+}
+.reviews .user_images img{
+    border-radius: 50%;
+    outline: 3px solid #bd0f0f;
+    outline-offset: 2px;
+    
+}
+.reviews .rating .yellow{
+    color: yellow;
+}

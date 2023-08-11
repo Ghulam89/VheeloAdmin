@@ -1,0 +1,14 @@
+
+.notifications input,
+.notifications textarea{
+    border: 1px solid rgb(233, 216, 216) !important;
+}
+.notifications input:focus{
+    border: 1px solid #00B106 !important;
+}
+.notifications textarea:focus{
+    border: 1px solid #00B106 !important;
+}
+.notifications label{
+    font-weight: 600;
+}

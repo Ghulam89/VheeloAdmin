@@ -1,0 +1,16 @@
+.user_profile .user_images img{
+   border-radius: 50% !important;
+   outline: 3px solid #00B106;
+   outline-offset: 2px;
+}
+
+.wallet input{
+    border: 1px solid #00B106;
+    padding: 9px;
+    border-radius: 15px;
+}
+.wallet .wallet_btn{
+    background-color: #00B106;
+    color: #fff;
+}
+

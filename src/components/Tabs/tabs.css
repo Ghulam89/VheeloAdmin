@@ -1,0 +1,23 @@
+.tabs .tabs_list{
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+} 
+.tabs .tabs_list li{
+    border: 1px solid #00B106;
+    background-color: #fff;
+    color: #00B106;
+    padding: 12px 12px;
+    border-radius: 24px;
+}
+.tabs .tabs_list .active{
+  
+
+    background-color: #00B106;
+    padding: 12px 12px;
+    color: #fff;
+    /* border-radius: 12px; */
+}
+
+

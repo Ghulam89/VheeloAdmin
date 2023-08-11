@@ -1,0 +1,70 @@
+
+.chatBox{
+   height: 430px;
+}
+
+.chats_person .badge{
+    background: #bd0f0f;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    padding: 0;
+    color: #fff;
+    
+}
+.chats_person ul li{
+  padding: 12px 0px;
+  transition: 0.3s;
+}
+.chats_person ul li a{
+  color: #00B106 !important;
+}
+.chats_person ul li:hover{
+   background-color: #acf0ae;
+}
+
+.chatMenu{
+    height: 400px;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+/* ===== Scrollbar CSS ===== */
+  /* Firefox */
+  .chatMenu {
+    scrollbar-width: auto;
+    scrollbar-color: #8f54a0 #ffffff;
+  }
+
+  /* Chrome, Edge, and Safari */
+  .chatMenu::-webkit-scrollbar {
+    width: 16px;
+  }
+
+  .chatMenu::-webkit-scrollbar-track {
+    background: #ffffff;
+  }
+
+  .chatMenu::-webkit-scrollbar-thumb {
+    background-color: wheat;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+  }
+
+
+  /* @media screen and  (max-width:767px) {
+     .chatMenu{
+        position: absolute;
+        top: 0;
+        right: 0;
+        background-color:#fff;
+        z-index: 999999;
+        width: 300px;
+        display: none;
+     }
+   .chatremove{
+    display: block;
+   }
+     
+    
+  } */

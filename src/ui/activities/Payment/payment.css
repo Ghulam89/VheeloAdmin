@@ -1,0 +1,7 @@
+.pagination li a:hover{
+    background-color: brown !important;
+}
+
+.thead_payment .thead-p{
+    padding: 0 !important;
+}
