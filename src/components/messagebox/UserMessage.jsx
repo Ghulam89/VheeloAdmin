@@ -218,7 +218,7 @@ console.log(this.state.getSupport);
                   <span className="online_icon" />
                 </div>
                 <div className="user_info">
-                  <span>{item?.firstName + item?.lastName}</span>
+                  <span>{item?.name}</span>
                   <p>Kalid is online</p>
                 </div>
               </div>

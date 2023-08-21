@@ -268,15 +268,23 @@ class SupportSystem extends React.Component {
                                                 </a>
                                             </div>
                                         </li> */}
-                                        <li className="nav-item dropdown header-profile ">
+                                        <li
+                                        
+                                           onClick={()=>{
+                                            document.querySelector(".dropdown-menu-right").style.display = "block"
+                                            }
+                                            }
+
+
+                                        className="nav-item dropdown header-profile ">
                                             <a
                                                 className="nav-link"
                                                 role="button"
                                                 data-toggle="dropdown"
-                                                href="/react/demo/table-bootstrap-basic"
+                                               
                                             >
                                                 <img
-                                                    src="/react/demo/static/media/17.a7b6b9cb820bffd162bf.jpg"
+                                                    src={require('../../../images/user.png')}
                                                     width={20}
                                                     alt=""
                                                 />

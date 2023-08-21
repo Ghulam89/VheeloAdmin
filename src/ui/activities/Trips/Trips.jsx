@@ -10,7 +10,9 @@ class Trips extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
-            trips: []
+            trips: [],
+            checked: false,
+            singleChecked: false
         }
     }
 
@@ -55,6 +57,9 @@ class Trips extends React.Component {
 
 
     }
+
+
+
 
     render() {
 
@@ -301,12 +306,19 @@ class Trips extends React.Component {
                                                 </a>
                                             </div>
                                         </li> */}
-                                        <li className="nav-item dropdown header-profile ">
+                                        <li
+                                         
+                                         onClick={()=>{
+                                            document.querySelector(".dropdown-menu-right").style.display = "block"
+                                            }
+                                            }
+                                        
+                                        className="nav-item dropdown header-profile ">
                                             <a
                                                 className="nav-link"
                                                 role="button"
                                                 data-toggle="dropdown"
-                                                href="/react/demo/table-bootstrap-basic"
+                                             
                                             >
                                                 <img
                                                     src={require('../../../images/male-02.jpg')}
@@ -1403,6 +1415,13 @@ class Trips extends React.Component {
                                                                         type="checkbox"
                                                                         className="custom-control-input"
                                                                         id="checkAll"
+
+                                                                        onClick={() => {
+                                                                            this.setState({
+                                                                              ...this.state,
+                                                                              checked: !(this.state.checked),
+                                                                            });
+                                                                          }}
                                                                     />
                                                                     <label
                                                                         className="custom-control-label"
@@ -1428,21 +1447,50 @@ class Trips extends React.Component {
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        {  this.state.trips.map((trip, index) =>
+                                                        {this.state.trips.map((trip, index) =>
                                                             <tr>
                                                                 <td>
-                                                                    <div className="custom-control custom-checkbox checkbox-success check-lg mr-3">
+                                                                    {this.state.checked === true ? <div className="custom-control custom-checkbox checkbox-success check-lg mr-3">
                                                                         <input
                                                                             type="checkbox"
                                                                             className="custom-control-input"
                                                                             id="customCheckBox2"
+
+                                                                            checked
                                                                         />
                                                                         <label
                                                                             className="custom-control-label"
                                                                             htmlFor="customCheckBox2"
                                                                         />
-                                                                    </div>
+                                                                    </div> :
+
+
+
+
+                                                                        <div className="custom-control custom-checkbox checkbox-success check-lg mr-3">
+                                                                            <input
+                                                                                type="checkbox"
+                                                                                className="custom-control-input"
+                                                                                id={`"customCheckBox2"`}
+
+
+                                                                                onClick={() => {
+                                                                                    this.setState({
+                                                                                        ...this.state,
+                                                                                        singleChecked: true,
+                                                                                    });
+                                                                                }}
+
+
+                                                                            />
+                                                                            <label
+                                                                                className="custom-control-label"
+                                                                                htmlFor="customCheckBox2"
+                                                                            />
+                                                                        </div>}
+
                                                                 </td>
+
                                                                 <td>
                                                                     <div className="d-flex align-items-center">
 

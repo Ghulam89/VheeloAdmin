@@ -285,12 +285,21 @@ class Reviews extends React.Component {
                                                 </a>
                                             </div>
                                         </li> */}
-                                        <li className="nav-item dropdown header-profile ">
+                                        <li 
+                                         
+                                         onClick={()=>{
+                                            document.querySelector(".dropdown-menu-right").style.display = "block"
+                                            }
+                                            }
+
+
+                                        
+                                        className="nav-item dropdown header-profile ">
                                             <a
                                                 className="nav-link"
                                                 role="button"
                                                 data-toggle="dropdown"
-                                                href="/react/demo/table-bootstrap-basic"
+                                               
                                             >
                                                 <img
                                                      src={require('../../../images/male-02.jpg')}
@@ -349,7 +358,7 @@ class Reviews extends React.Component {
                                                 </a>
                                                 <a
                                                     className="dropdown-item ai-icon"
-                                                    href="/react/demo/page-login"
+                                                    href="/"
                                                 >
                                                     <svg
                                                         id="icon-logout"

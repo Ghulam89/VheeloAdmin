@@ -1541,7 +1541,7 @@ class UserProfile extends React.Component {
 
                         <div className="pt-3">
                           <h2>
-                            {this.state.user?.firstName + this.state.user?.lastName}
+                            {this.state.user?.name}
                           </h2>
                         </div>
 

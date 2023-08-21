@@ -14,6 +14,7 @@ class RideCategories extends React.Component {
     this.state = {
       ride_categories: [],
       ride_category_uid: "",
+      checked:false,singleChecked:false
     };
   }
 
@@ -109,12 +110,24 @@ class RideCategories extends React.Component {
                     </div>
                     <ul className="navbar-nav header-right">
                       
-                      <li className="nav-item dropdown header-profile ">
+                      <li
+                      
+                      
+                       
+                      onClick={()=>{
+                        document.querySelector(".dropdown-menu-right").style.display = "block"
+                        }
+                        }
+
+
+
+                      
+                      className="nav-item dropdown header-profile ">
                         <a
                           className="nav-link"
                           role="button"
                           data-toggle="dropdown"
-                          href="/react/demo/table-bootstrap-basic"
+                        
                         >
                           <img
                             src={require("../../../images/male-02.jpg")}
@@ -129,7 +142,7 @@ class RideCategories extends React.Component {
                         <div className="dropdown-menu dropdown-menu-right ">
                           <a
                             className="dropdown-item ai-icon"
-                            href="/react/demo/app-profile"
+                        
                           >
                             <svg
                               id="icon-user1"
@@ -1255,6 +1268,13 @@ class RideCategories extends React.Component {
                                 <th className="width50">
                                   <div className="custom-control custom-checkbox checkbox-success check-lg mr-3">
                                     <input
+
+onClick={() => {
+  this.setState({
+    ...this.state,
+    checked: !(this.state.checked),
+  });
+}}
                                       type="checkbox"
                                       className="custom-control-input"
                                       id="checkAll"
@@ -1282,19 +1302,47 @@ class RideCategories extends React.Component {
                             <tbody>
                               {this.state.ride_categories.map((user) => (
                                 <tr>
-                                  <td>
-                                    <div className="custom-control custom-checkbox checkbox-success check-lg mr-3">
-                                      <input
-                                        type="checkbox"
-                                        className="custom-control-input"
-                                        id="customCheckBox2"
-                                      />
-                                      <label
-                                        className="custom-control-label"
-                                        htmlFor="customCheckBox2"
-                                      />
-                                    </div>
-                                  </td>
+                                   <td>
+                                                            {this.state.checked===true?<div className="custom-control custom-checkbox checkbox-success check-lg mr-3">
+                                                                <input
+                                                                    type="checkbox"
+                                                                    className="custom-control-input"
+                                                                    id="customCheckBox2"
+
+                                                                   checked 
+                                                                />
+                                                                <label
+                                                                    className="custom-control-label"
+                                                                    htmlFor="customCheckBox2"
+                                                                />
+                                                            </div>:
+
+
+
+                                                            
+                                                            <div className="custom-control custom-checkbox checkbox-success check-lg mr-3">
+                                                            <input
+                                                                type="checkbox"
+                                                                className="custom-control-input"
+                                                                id={`"customCheckBox2"`}
+
+
+                                                                onClick={() => {
+                                                                    this.setState({
+                                                                      ...this.state,
+                                                                      singleChecked: true,
+                                                                    });
+                                                                  }}
+
+                                                               
+                                                            />
+                                                            <label
+                                                                className="custom-control-label"
+                                                                htmlFor="customCheckBox2"
+                                                            />
+                                                        </div>}
+                                                            
+                                                        </td>
                                   <td>
                                     <div className="d-flex align-items-center">
                                       <img

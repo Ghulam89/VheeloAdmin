@@ -153,8 +153,8 @@ background-color: rgba(0,0,0,0.3) !important;
 }
 .img_cont{
   position: relative;
-  height: 70px;
-  width: 70px;
+  height: 50px;
+  width: 50px;
 }
 .img_cont_msg{
   height: 40px;

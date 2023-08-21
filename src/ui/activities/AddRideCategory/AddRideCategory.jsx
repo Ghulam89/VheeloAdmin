@@ -17,6 +17,8 @@ class AddRideCategory extends React.Component {
             enabled: '',
             type: '',
             per_km_price: '',
+            getFile:'',
+            per_minute_price:'',
         }
 
     }
@@ -33,7 +35,7 @@ class AddRideCategory extends React.Component {
 
 
 
-    sendDataToRegisterApi = () => {
+    sendDataToRegisterApi = async() => {
 
         // const params = new FormData();
 
@@ -62,48 +64,88 @@ class AddRideCategory extends React.Component {
         //     })
 
         if (this.state.name && this.state.per_km_price && this.state.enabled) {
+         
+
+            console.log(this.state.name,this.state.per_km_price,this.state.enabled,this.state.per_minute_price,this.state.type);
 
 
-            const axios = require('axios');
-            const qs = require('qs');
-            let data = qs.stringify({
-                'name': this.state.name,
-                'logo': 'http://res.cloudinary.com/ddu4sybue/image/upload/v1684576433/x1sxun9vhjsnll0jqzne.png',
-                'priceMinute': '50',
-                'priceKm': this.state.per_km_price,
-                "status": this.state.enabled
-            });
-
-            let config = {
-                method: 'post',
-                maxBodyLength: Infinity,
-                url:`${BASE_URL}admin/rideCatQuick/add`,
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded'
-                },
-                data: data
+            
+            var formdata = new FormData();
+            formdata.append("file", this.state.files, "/path/to/file");
+            
+            var requestOptions = {
+              method: 'POST',
+              body: formdata,
+              redirect: 'follow'
             };
+            
+            fetch("http://157.245.101.0:3005/rider/auth/upload", requestOptions)
+              .then(response => response.text())
+            
+              .then(result => {console.log(result)
 
-            axios.request(config)
-                .then((response) => {
-                    console.log(JSON.stringify(response.data));
-                    toast.success("Ride Category Add Successfully")
-                    setTimeout(() => {
-                        const urlArgsBundle = (new UrlArgsBundle()).prepareFrom(this.props.location.search);
-                        urlArgsBundle.setActivityTag(ACTIVITY_TAG.RIDE_CATEGORIES)
-                        this.props.history.push(urlArgsBundle.getArgsAsUrlParams())
-                    }, 1500);
 
-                })
-                .catch((error) => {
-                    console.log(error);
+                this.setState({ ...this.state,getFile:JSON.parse(result)}) 
+
+                console.log(this.state.getFile);
+
+                const axios = require('axios');
+                const qs = require('qs');
+                let data = qs.stringify({
+                    'name':this.state.name,
+                    'logo':this.state.getFile.data,
+                    'priceKm':this.state.per_km_price,
+                    'priceMinute':this.state.per_minute_price,
+                    'type':this.state.type,
                 });
+    
+                let config = {
+                    method: 'post',
+                    maxBodyLength: Infinity,
+                    url:`${BASE_URL}admin/rideCatQuick/add`,
+                    headers: {
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    data: data
+                };
+    
+                axios.request(config)
+                    .then((response) => {
+                        console.log(JSON.stringify(response.data));
+                        toast.success("Ride Category Add Successfully")
+                        setTimeout(() => {
+                            const urlArgsBundle = (new UrlArgsBundle()).prepareFrom(this.props.location.search);
+                            urlArgsBundle.setActivityTag(ACTIVITY_TAG.RIDE_CATEGORIES)
+                            this.props.history.push(urlArgsBundle.getArgsAsUrlParams())
+                        }, 1500);
+    
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+
+
+
+    
+
+
+
+
+              
+        })
+
+              .catch(error => console.log('error', error));
+              
+
         } else {
             toast.error("Please fill all the fields")
         }
 
     }
 
+
+
+    
 
 
 
@@ -113,7 +155,9 @@ class AddRideCategory extends React.Component {
     render() {
 
 
+     const {getFile} = this.state
 
+     console.log(getFile.data);
         const { name, image, enabled, type, per_km_price } = this.state
         const urlArgsBundle = (new UrlArgsBundle()).prepareFrom(this.props.location.search);
 
@@ -1478,9 +1522,9 @@ class AddRideCategory extends React.Component {
                                                         <label>Type</label>
                                                         <select id="inputState" className="form-control"
                                                             value={type}
-                                                            onChange={e => { this.setState({ ...this.state, type: e.target.value }) }}
+                                                            onChange={e => { this.setState({ ...this.state,type:e.target.value }) }}
                                                         >
-                                                            <option>Choose...</option>
+                                                            <option selected>Choose...</option>
                                                             <option value={"CAR"}>Car</option>
                                                             <option value={"BIKE"}>Bike</option>
                                                         </select>
@@ -1497,7 +1541,7 @@ class AddRideCategory extends React.Component {
                                                         />
                                                     </div>
                                                     <div className="form-group col-md-6">
-                                                        <label>price</label>
+                                                        <label>price Km</label>
                                                         <input
 
                                                             type="text"
@@ -1505,6 +1549,17 @@ class AddRideCategory extends React.Component {
                                                             placeholder="Sargodha ..."
 
                                                             onChange={e => { this.setState({ ...this.state, per_km_price: e.target.value }) }}
+                                                        />
+                                                    </div>
+                                                    <div className="form-group col-md-6">
+                                                        <label>price Minute</label>
+                                                        <input
+
+                                                            type="text"
+                                                            className="form-control"
+                                                            placeholder="Sargodha ..."
+
+                                                            onChange={e => { this.setState({ ...this.state, per_minute_price: e.target.value }) }}
                                                         />
                                                     </div>
 

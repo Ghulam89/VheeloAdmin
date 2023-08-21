@@ -112,12 +112,20 @@ class VehicleModel extends React.Component {
                                     </div>
                                     <ul className="navbar-nav header-right">
                                        
-                                        <li className="nav-item dropdown header-profile ">
+                                        <li
+                                        
+                                         
+                                        onClick={()=>{
+                                            document.querySelector(".dropdown-menu-right").style.display = "block"
+                                            }
+                                            }
+                                        
+                                        className="nav-item dropdown header-profile ">
                                             <a
                                                 className="nav-link"
                                                 role="button"
                                                 data-toggle="dropdown"
-                                                href="/react/demo/table-bootstrap-basic"
+                                               
                                             >
                                                 <img
                                                     src={require('../../../images/male-02.jpg')}
@@ -176,7 +184,7 @@ class VehicleModel extends React.Component {
                                                 </a>
                                                 <a
                                                     className="dropdown-item ai-icon"
-                                                    href="/react/demo/page-login"
+                                                    href="/"
                                                 >
                                                     <svg
                                                         id="icon-logout"
@@ -1261,12 +1269,15 @@ class VehicleModel extends React.Component {
                                                                     htmlFor="customCheckBox2"
                                                                 />
                                                             </div>:
+
+
+
                                                             
                                                             <div className="custom-control custom-checkbox checkbox-success check-lg mr-3">
                                                             <input
                                                                 type="checkbox"
                                                                 className="custom-control-input"
-                                                                id="customCheckBox2"
+                                                                id={`"customCheckBox2"`}
 
 
                                                                 onClick={() => {

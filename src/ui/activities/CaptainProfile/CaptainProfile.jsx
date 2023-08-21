@@ -87,7 +87,7 @@ class CaptainProfile extends React.Component {
         let config3 = {
           method: "get",
           maxBodyLength: Infinity,
-          url: `${BASE_URL}rider/rideCatQuick/getById/${response.data.data.vehicleInfo.categoryId}`,
+          url: `${BASE_URL}rider/rideCatQuick/getById/${response?.data?.data.vehicleInfo?.categoryId}`,
           headers: {},
         };
 
@@ -141,8 +141,8 @@ class CaptainProfile extends React.Component {
 
     const params ={
 
-  "rider":this.state.captain.id,
- "balance":Number(this.state.wallet) + Number(this.state.getWallet.balance)
+  "rider":this.state?.captain?.id,
+ "balance":Number(this.state?.wallet) + Number(this.state?.getWallet?.balance)
 
     }
 
@@ -453,12 +453,22 @@ class CaptainProfile extends React.Component {
                           </a>
                         </div>
                       </li> */}
-                      <li className="nav-item dropdown header-profile ">
+                      <li 
+                      
+                       
+                      onClick={()=>{
+                        document.querySelector(".dropdown-menu-right").style.display = "block"
+                        }
+                        }
+
+
+                      
+                      className="nav-item dropdown header-profile ">
                         <a
                           className="nav-link"
                           role="button"
                           data-toggle="dropdown"
-                          href="/react/demo/table-bootstrap-basic"
+                         
                         >
                           <img
                             src="/react/demo/static/media/17.a7b6b9cb820bffd162bf.jpg"
@@ -1696,8 +1706,8 @@ class CaptainProfile extends React.Component {
                                       <div>
                                         <img
                                           src={
-                                            this.state.category
-                                              .logo
+                                            this.state?.category
+                                              ?.logo
                                           }
                                           alt=""
                                           width="100%"
@@ -1710,8 +1720,8 @@ class CaptainProfile extends React.Component {
                                         <h6>
                                           Name:{" "}
                                           {
-                                            this.state.category
-                                              .name
+                                            this.state?.category
+                                              ?.name
                                           }
                                         </h6>
                                         {/* <p>
@@ -1724,8 +1734,8 @@ class CaptainProfile extends React.Component {
                                         <p>
                                           Per Km Cost:{" "}
                                           {
-                                            this.state.category
-                                              .priceKm
+                                            this.state?.category
+                                              ?.priceKm
                                           }
                                         </p>
                                       </div>
@@ -1745,7 +1755,7 @@ class CaptainProfile extends React.Component {
                                       <h5>Front</h5>
                                       <div>
                                         <img
-                                          src={this.state.document.cnicFront}
+                                          src={this.state?.document?.cnicFront}
                                           alt=""
                                           width="100%"
                                         />
@@ -1755,7 +1765,7 @@ class CaptainProfile extends React.Component {
                                       <h5>Back</h5>
                                       <div>
                                         <img
-                                          src={this.state.document.cnicBack}
+                                          src={this.state?.document?.cnicBack}
                                           alt=""
                                           width="100%"
                                         />
@@ -1776,7 +1786,7 @@ class CaptainProfile extends React.Component {
                                       <h5>Front</h5>
                                       <div>
                                         <img
-                                          src={this.state.vehicle.cardFront}
+                                          src={this.state?.vehicle?.cardFront}
                                           alt=""
                                           width="100%"
                                         />
@@ -1798,7 +1808,7 @@ class CaptainProfile extends React.Component {
                                       <h5>Front</h5>
                                       <div>
                                         <img
-                                          src={this.state.vehicle.plateImage
+                                          src={this.state?.vehicle?.plateImage
                                           }
                                           alt=""
                                           width="100%"
@@ -1813,7 +1823,7 @@ class CaptainProfile extends React.Component {
                               className="tabsContent pt-5"
                               hidden={this.state.update != 5}
                             >
-                              <h4>Amount: {this.state.getWallet.balance}</h4>
+                              <h4>Amount: {this.state?.getWallet?.balance}</h4>
                               <div className="wallet d-flex justify-content-center pt-3">
                                 <div>
                                   <input

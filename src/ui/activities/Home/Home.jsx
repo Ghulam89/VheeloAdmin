@@ -72,7 +72,7 @@ class Home extends React.Component {
                                                 className="nav-link"
                                                 role="button"
                                                 data-toggle="dropdown"
-                                                href=""
+                                              
                                             >
                                                 <img
                                                     src={require('../../../images/male-02.jpg')}
@@ -87,7 +87,7 @@ class Home extends React.Component {
                                             <div className="dropdown-menu dropdown-menu-right  ">
                                                 <a
                                                     className="dropdown-item ai-icon"
-                                                    href=""
+                                                   
                                                 >
                                                     <svg
                                                         id="icon-user1"
@@ -131,7 +131,7 @@ class Home extends React.Component {
                                                 </a>
                                                 <a
                                                     className="dropdown-item ai-icon"
-                                                    href=""
+                                                    href="/"
                                                 >
                                                     <svg
                                                         id="icon-logout"

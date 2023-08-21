@@ -13,6 +13,9 @@ class Faq extends React.Component {
     super(props);
     this.state = {
       FAQs: [],
+      checked: false,
+            singleChecked: false
+            
       
     };
   }
@@ -332,12 +335,22 @@ class Faq extends React.Component {
                           </a>
                         </div>
                       </li> */}
-                      <li className="nav-item dropdown header-profile ">
+                      <li
+                      
+                       
+                      onClick={()=>{
+                        document.querySelector(".dropdown-menu-right").style.display = "block"
+                        }
+                        }
+
+
+                      
+                      className="nav-item dropdown header-profile ">
                         <a
                           className="nav-link"
                           role="button"
                           data-toggle="dropdown"
-                          href="/react/demo/table-bootstrap-basic"
+                          
                         >
                           <img
                             src={require("../../../images/male-02.jpg")}
@@ -396,7 +409,7 @@ class Faq extends React.Component {
                           </a>
                           <a
                             className="dropdown-item ai-icon"
-                            href="/react/demo/page-login"
+                            href="/"
                           >
                             <svg
                               id="icon-logout"
@@ -1478,6 +1491,14 @@ class Faq extends React.Component {
                                 <th className="width50">
                                   <div className="custom-control custom-checkbox checkbox-success check-lg mr-3">
                                     <input
+
+onClick={() => {
+  this.setState({
+    ...this.state,
+    checked: !(this.state.checked),
+  });
+}}
+
                                       type="checkbox"
                                       className="custom-control-input"
                                       id="checkAll"
