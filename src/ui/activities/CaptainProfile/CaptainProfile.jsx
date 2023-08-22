@@ -92,7 +92,7 @@ function CaptainProfile() {
 
 
     const params = {
-      rider:captain.id,
+      rider:id,
       balance: Number(wallet) + Number(getWallet?.balance),
     };
 

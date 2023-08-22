@@ -68,47 +68,45 @@ const Captains = (props) => {
               </div>
               <div className="card-body">
                 <div className="table-responsive table-responsive-lg">
-                  <table className="table ">
-                    <thead>
-                      <tr>
-                        <th className="width50">
-                          <div className="custom-control custom-checkbox checkbox-success check-lg mr-3">
-                          <input
+                <table className="table">
+                      <thead>
+                        <tr onClick={() => { }}>
+                          <th className="width50">
+                            <div className="custom-control custom-checkbox checkbox-success check-lg mr-3">
+                            <input
                                   onClick={handleCheckAll}
                                   type="checkbox"
                                   className="custom-control-input"
                                   id="checkAll"
                                 />
-                            <label
-                              className="custom-control-label"
-                              htmlFor="checkAll"
-                            />
-                          </div>
-                        </th>
-                        <th>
-                          <strong>NAME</strong>
-                        </th>
-                        <th>
-                          <strong>Email</strong>
-                        </th>
-                        <th>
-                          <strong>Date Of Birth</strong>
-                        </th>
-                        <th>
-                          <strong>Phone</strong>
-                        </th>
-                        <th>
-                          <strong>Toggle Block</strong>
-                        </th>
-                        <th>
-                          <strong>View Details</strong>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {captains.map((captain,index) => (
-                        <tr>
-                           <td>
+                              <label
+                                className="custom-control-label"
+                                htmlFor="checkAll"
+                              />
+                            </div>
+                          </th>
+                          <th>
+                            <strong>NAME</strong>
+                          </th>
+                          <th>
+                            <strong>Email</strong>
+                          </th>
+
+                          <th>
+                            <strong>Phone</strong>
+                          </th>
+                          <th>
+                            <strong>Block</strong>
+                          </th>
+                          <th>
+                            <strong>View Details</strong>
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {captains.map((captain,index) => (
+                          <tr>
+                             <td>
                               <div className="custom-control custom-checkbox checkbox-success check-lg mr-3">
                                 {checked?<input
                                   type="checkbox"
@@ -128,23 +126,14 @@ const Captains = (props) => {
                                 />
                               </div>
                             </td>
-                          <td>
-                            <div className="d-flex align-items-center">
-                              <img
-                                src={captain.image}
-                                className="rounded-lg mr-2"
-                                width={24}
-                                alt=""
-                              />{" "}
-                              <span className="w-space-no">
-                                {captain.firstName + " " + captain.lastName}
-                              </span>
-                            </div>
-                          </td>
-                          <td>{captain.email}</td>
-                          <td>01 August 2020</td>
-                          <td>{captain.phone}</td>
-                          <td>
+                            <td>
+                              <div className="d-flex align-items-center">
+                                <span className="w-space-no">{captain.firstName + captain.lastName}</span>
+                              </div>
+                            </td>
+                            <td>{captain.email}</td>
+
+                            <td>{captain.phone}</td>
                             <td>
                               <label class="switch">
                                 {captain["blocked"] == true ? (
@@ -164,7 +153,7 @@ const Captains = (props) => {
                                         "__api_key__",
                                         "hi,-its-eevee. I can do wonderful things in api creation."
                                       );
-                                      params.append("captain_uid", captain.uid);
+                                      params.append("user_uid", captain.uid);
 
                                       const config = {
                                         headers: {
@@ -175,7 +164,7 @@ const Captains = (props) => {
 
                                       axios
                                         .post(
-                                          "https://apis.cab5.pk/toggle_captain_block.php",
+                                          "https://apis.cab5.pk/toggle_user_block.php",
                                           params,
                                           config
                                         )
@@ -201,7 +190,7 @@ const Captains = (props) => {
                                         "__api_key__",
                                         "hi,-its-eevee. I can do wonderful things in api creation."
                                       );
-                                      params.append("captain_uid", captain.uid);
+                                      params.append("user_uid", captain.uid);
 
                                       const config = {
                                         headers: {
@@ -212,7 +201,7 @@ const Captains = (props) => {
 
                                       axios
                                         .post(
-                                          "https://apis.cab5.pk/toggle_captain_block.php",
+                                          "https://apis.cab5.pk/toggle_user_block.php",
                                           params,
                                           config
                                         )
@@ -226,20 +215,20 @@ const Captains = (props) => {
                                 <span class="slider round"></span>
                               </label>
                             </td>
-                          </td>
-                          <td>
-                          <Link
+                            <td>
+                              
+                              <Link
                                to={`/captainsProfile/${captain?.id}`} 
                               
                                 className={"button"}
                               >
                                 View Details
                               </Link>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
                 </div>
               </div>
             </div>
