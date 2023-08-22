@@ -152,10 +152,6 @@ body::-webkit-scrollbar-thumb,
     display: none;
   }
 
-.header{
-  position: fixed;
-  width:100%;
-}
 .nav-header{
   position: fixed;
   background-color: #00B106 !important;
@@ -230,6 +226,12 @@ input:checked + .slider:before {
 
 .slider.round:before {
   border-radius: 50%;
+}
+
+.Navbar{
+  background-color: #fff !important;
+  width: 81% !important;
+  z-index: 99999;
 }
 
 

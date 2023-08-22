@@ -1,12 +1,7 @@
-import person from '../../images/male-02.jpg'
-import send from '../../images/send.png'
-import Usermessage from '../usermessage/Usermessage'
+
 import React from 'react';
-import {withRouter} from "react-router-dom";
 import UrlArgsBundle from "../../core/url_args_bundle";
 import '../../css/main.6120d571.css';
-import Sidebar from "../../components/sidebar/Sidebar";
-import {ACTIVITY_TAG} from "../../utils/Constants";
 import '../chatapp/chatapp.css';
 import '../usermessage/usermessge.css';
 import '../message/message.css';
@@ -165,7 +160,7 @@ class UserMessage extends React.Component {
 console.log(this.state.getSupport);
         console.log(this.state.message,'admin message');
 
-        const urlArgsBundle = (new UrlArgsBundle()).prepareFrom(this.props.location.search);
+      
         return <div className={"bg-white p-3 rounded-5"}>
 
            
@@ -389,4 +384,4 @@ console.log(this.state.getSupport);
     }
 }
 
-export default withRouter(UserMessage);
+export default UserMessage;

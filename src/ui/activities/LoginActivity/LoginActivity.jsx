@@ -1,38 +1,37 @@
 import React, { useState } from "react";
-import { withRouter } from "react-router-dom";
+import { useNavigate, withRouter } from "react-router-dom";
 import "./LoginActivity.css";
 import UrlArgsBundle from "../../../core/url_args_bundle";
 import "../../../css/main.6120d571.css";
 import { ACTIVITY_TAG } from "../../../utils/Constants";
-
-function LoginActivity(props) {
+const LoginActivity =  () =>{
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showEmailPopUp, setShowEmailPopup] = useState(false);
   const [showPasswordPopUp, setShowPasswordPopUp] = useState(false);
   const [showInvalidLogin, setShowInvalidLogin] = useState(false);
 
-  const urlArgsBundle = new UrlArgsBundle().prepareFrom(props.location.search);
+  const navigate= useNavigate()
+
   const sendDataToRegisterApi = () => {
+
+
     if (email === "") {
       setShowEmailPopup(true);
       setTimeout(() => setShowEmailPopup(false), 3000);
     } else if (password === "") {
       setShowPasswordPopUp(true);
       setTimeout(() => setShowPasswordPopUp(false), 3000);
-    } else {
-      const urlArgsBundle = new UrlArgsBundle().prepareFrom(
-        props.location.search
-      );
+    } 
       if (email === "admin" && password === "admin") {
-        urlArgsBundle.setActivityTag(ACTIVITY_TAG.HOME);
-        props.history.push(urlArgsBundle.getArgsAsUrlParams());
+    
+          navigate('/home')
+      
       } else {
         setShowInvalidLogin(true);
         setTimeout(() => setShowPasswordPopUp(false), 3000);
       }
     }
-  };
   return (
     <div className={"login-activity pt-4"}>
       <div className={`pop-up ${showEmailPopUp ? "show-pop-up " : ""}`}>
@@ -139,4 +138,4 @@ function LoginActivity(props) {
   );
 }
 
-export default withRouter(LoginActivity);
+export default LoginActivity;

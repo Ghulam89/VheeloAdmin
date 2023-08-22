@@ -37,4 +37,4 @@ import './chatapp.css'
   }
   
 
-export default withRouter(Chatapp);
+export default  Chatapp;
