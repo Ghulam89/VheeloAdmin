@@ -7,17 +7,20 @@ import BASE_URL from "../../../BASE_URL";
 import { useParams } from "react-router-dom";
 
 function CaptainProfile() {
-  const {id} = useParams();
+  const { id } = useParams();
   const [update, setUpdate] = useState(0);
   const [captain, setCaptain] = useState("");
+  const [loading, setLoading] = useState(false)
   const [document, setDocument] = useState("");
   const [vehicle, setVehicle] = useState("");
   const [category, setCategory] = useState("");
-  const [wallet, setWallet] = useState("");
+  const [wallet, setWallet] = useState(0);
   const [getWallet, setGetWallet] = useState("");
 
+  console.log(wallet)
+
   useEffect(() => {
-  
+
 
     const config = {
       method: "get",
@@ -60,7 +63,7 @@ function CaptainProfile() {
     };
 
 
-    
+
     axios
       .request(config2)
       .then((response) => {
@@ -90,14 +93,17 @@ function CaptainProfile() {
 
   const sendDataToRegisterApi = () => {
 
-
+       setLoading(true)
+console.log(getWallet?.balance?true:false);
+console.log(wallet);
     const params = {
-      rider:id,
-      balance: Number(wallet) + Number(getWallet?.balance),
+      rider: id,
+      balance: getWallet?.balance?(parseInt(wallet) + parseInt(getWallet?.balance)):parseInt(wallet),
     };
 
     axios.post(`${BASE_URL}admin/walletRider/add`, params).then((res) => {
       if (res.data.status === "success") {
+        setLoading(false)
         toast("Added Successfully!");
 
         const config3 = {
@@ -119,7 +125,7 @@ function CaptainProfile() {
     });
   };
 
-  
+
 
 
   return (
@@ -161,9 +167,8 @@ function CaptainProfile() {
                 <div className="tabs">
                   <ul className="tabs_list">
                     <li
-                      className={`tabs_link ${
-                        update === 0 ? "active" : null
-                      }`}
+                      className={`tabs_link ${update === 0 ? "active" : null
+                        }`}
                       onClick={() => {
                         setUpdate(0);
                       }}
@@ -171,9 +176,8 @@ function CaptainProfile() {
                       About
                     </li>
                     <li
-                      className={`tabs_link ${
-                        update === 1 ? "active" : null
-                      }`}
+                      className={`tabs_link ${update === 1 ? "active" : null
+                        }`}
                       onClick={() => {
                         setUpdate(1);
                       }}
@@ -181,9 +185,8 @@ function CaptainProfile() {
                       Ride Categories
                     </li>
                     <li
-                      className={`tabs_link ${
-                        update === 2 ? "active" : null
-                      }`}
+                      className={`tabs_link ${update === 2 ? "active" : null
+                        }`}
                       onClick={() => {
                         setUpdate(2);
                       }}
@@ -191,9 +194,8 @@ function CaptainProfile() {
                       CNIC
                     </li>
                     <li
-                      className={`tabs_link ${
-                        update === 3 ? "active" : null
-                      }`}
+                      className={`tabs_link ${update === 3 ? "active" : null
+                        }`}
                       onClick={() => {
                         setUpdate(3);
                       }}
@@ -201,9 +203,8 @@ function CaptainProfile() {
                       License
                     </li>
                     <li
-                      className={`tabs_link ${
-                        update === 4 ? "active" : null
-                      }`}
+                      className={`tabs_link ${update === 4 ? "active" : null
+                        }`}
                       onClick={() => {
                         setUpdate(4);
                       }}
@@ -211,9 +212,8 @@ function CaptainProfile() {
                       Number Plate
                     </li>
                     <li
-                      className={`tabs_link ${
-                        update === 5 ? "active" : null
-                      }`}
+                      className={`tabs_link ${update === 5 ? "active" : null
+                        }`}
                       onClick={() => {
                         setUpdate(5);
                       }}
@@ -255,7 +255,7 @@ function CaptainProfile() {
                             <div className="col-lg-6 col-sm-12">
                               <div className="text-center">
                                 <h6>Name: {category?.name}</h6>
-                               
+
                                 <p>
                                   Per Km Cost: {category?.priceKm}
                                 </p>
@@ -349,23 +349,20 @@ function CaptainProfile() {
                           <input
                             className="class-control"
                             onChange={(e) => {
-                              setWallet({
-                               
-                                wallet: e.target.value,
-                              });
+                              setWallet(e.target.value);
                             }}
-                            type="text"
+                            type="number"
                           />
                         </div>
                         <div className="pl-4">
-                          <button
-                            className="btn wallet_btn"
-                            onClick={() => {
-                             sendDataToRegisterApi();
-                            }}
+                          {loading === true ? (<button class="btn btn-add" type="button" disabled>
+                            <span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>
+                            Loading...
+                          </button>) : (<button type="submit" className="btn  px-5 btn-add"
+                            onClick={sendDataToRegisterApi}
                           >
                             Add
-                          </button>
+                          </button>)}
                         </div>
                         <div></div>
                       </div>

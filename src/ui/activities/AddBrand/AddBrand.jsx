@@ -13,6 +13,8 @@ const AddBrand = () => {
   const navigate = useNavigate()
   const apiUrl = process.env.REACT_APP_API_URL;
 
+  const [loading,setLoading] = useState(false)
+
   const [vehicleBrandName, setVehicleBrandName] = useState("");
   const [type, setType] = useState("");
 
@@ -95,12 +97,14 @@ const AddBrand = () => {
                     </div>
                     <div className="form-row"></div>
                     <div className="form-group"></div>
-                    <button
-                      onClick={sendDataToRegisterApi}
-                      className="btn btn-add"
-                    >
-                      Add
-                    </button>
+                    {loading === true ? (                                  <button class="btn btn-add" type="button" disabled>
+  <span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>
+   Loading...
+</button>) : (  <button type="submit" className="btn btn-add"
+                                                onClick={sendDataToRegisterApi}
+                                            >
+                                                Add
+                                            </button>)}
                   </div>
                 </div>
               </div>

@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { useNavigate, withRouter } from "react-router-dom";
 import "./LoginActivity.css";
-import UrlArgsBundle from "../../../core/url_args_bundle";
 import "../../../css/main.6120d571.css";
-import { ACTIVITY_TAG } from "../../../utils/Constants";
+import { toast } from "react-toastify";
 const LoginActivity =  () =>{
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -13,23 +12,25 @@ const LoginActivity =  () =>{
 
   const navigate= useNavigate()
 
-  const sendDataToRegisterApi = () => {
+  const sendDataToRegisterApi = (e) => {
+
+
+    e.preventDefault();
 
 
     if (email === "") {
-      setShowEmailPopup(true);
-      setTimeout(() => setShowEmailPopup(false), 3000);
+        toast.error('plea enter your username!')
     } else if (password === "") {
-      setShowPasswordPopUp(true);
-      setTimeout(() => setShowPasswordPopUp(false), 3000);
+      toast.error('plea enter your password!')
     } 
       if (email === "admin" && password === "admin") {
     
           navigate('/home')
+          toast.error('Welcome to vheelo admin panel!')
       
       } else {
-        setShowInvalidLogin(true);
-        setTimeout(() => setShowPasswordPopUp(false), 3000);
+        toast.error('invalid   username or password!')
+       
       }
     }
   return (
@@ -73,7 +74,7 @@ const LoginActivity =  () =>{
                         <input
                           type="text"
                           name={"email"}
-                          required={"email"}
+                       
                           placeholder={"Enter Username"}
                           className="form-control"
                           onChange={(event) => {
@@ -88,7 +89,7 @@ const LoginActivity =  () =>{
                         <input
                           type="password"
                           className="form-control"
-                          required={"password"}
+                         
                           name={"password"}
                           placeholder={"Enter Password"}
                           onChange={(event) => {
@@ -118,9 +119,7 @@ const LoginActivity =  () =>{
                         <button
                           type="submit"
                           className="btn bg-white text-primary btn-block"
-                          onClick={() => {
-                            sendDataToRegisterApi();
-                          }}
+                          onClick={sendDataToRegisterApi}
                         >
                           {" "}
                           Sign Me In

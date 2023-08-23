@@ -6,6 +6,13 @@
 }
 
 
+#Sidebar{
+  transition: 0.5s all !important;
+}
+
+
+
+
 .App {
   text-align: center;
 }
@@ -230,9 +237,88 @@ input:checked + .slider:before {
 
 .Navbar{
   background-color: #fff !important;
-  width: 81% !important;
+  /* width: 81% !important; */
   z-index: 99999;
 }
+
+
+
+.loader{
+  display: inline-block;
+  text-align: center;
+  line-height: 86px;
+  text-align: center;
+  position: relative;
+  padding: 0 48px;
+  font-size: 48px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: #fff;
+  }
+  .loader:before, .loader:after {
+    content: "";
+    display: block;
+    width: 15px;
+    height: 15px;
+    background: currentColor;
+    position: absolute;
+    animation: load .7s infinite alternate ease-in-out;
+    top: 0;
+  }
+  .loader:after {
+    top: auto;
+    bottom: 0;
+  }
+@keyframes load {
+  0% {
+    left: 0;
+    height: 43px;
+    width: 15px;
+    transform: translateX(0)
+  }
+  50% {
+    height: 10px;
+    width: 40px
+  }
+  100% {
+    left: 100%;
+    height: 43px;
+    width: 15px;
+    transform: translateX(-100%)
+  }
+}
+
+.btn-add{
+
+  outline: none !important;
+  color: #fff !important;
+
+}
+
+
+a{
+  outline:none !important;
+  text-decoration: none;
+}
+
+a:hover{
+  color: #fff !important;
+}
+
+
+/* 
+
+.loadingContainer{
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00B106 !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+} */
 
 
 @media screen and (max-width:991px) {
@@ -246,6 +332,19 @@ input:checked + .slider:before {
     padding: 12px !important;
     border-radius: 12px !important;
     
+  }
+
+  #layout_container{
+    margin-left: 0px !important;
+  }
+
+  .Navbar{
+    width: 100% !important;
+  }
+  
+
+  #vheelo_logo{
+    display:none !important;
   }
   
   .chatactive{

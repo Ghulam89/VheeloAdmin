@@ -7,6 +7,7 @@ class Home extends React.Component {
     render() {
       
         return <div className={"login-activity"}>
+
                 <div id="main-wrapper" className="show"> 
                         <div className="container-fluid p-5 ">
                            

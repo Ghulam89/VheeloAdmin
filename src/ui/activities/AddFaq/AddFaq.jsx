@@ -7,6 +7,7 @@ import { useNavigate } from "react-router-dom";
 const AddFaq = (props) => {
 
   const navigate = useNavigate()
+  const [loading,setLoading] = useState(false)
   const apiUrl = process.env.REACT_APP_API_URL;
 
   const [question, setQuestion] = useState("");
@@ -99,12 +100,14 @@ const AddFaq = (props) => {
                     </div>
                   </div>
                   <div className="form-group"></div>
-                  <button
-                    onClick={sendDataToRegisterApi}
-                    className="btn btn-add"
-                  >
-                    Add
-                  </button>
+                  {loading === true ? (                                  <button class="btn btn-add" type="button" disabled>
+  <span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>
+   Loading...
+</button>) : (  <button type="submit" className="btn btn-add"
+                                                onClick={sendDataToRegisterApi}
+                                            >
+                                                Add
+                                            </button>)}
                 </div>
               </div>
             </div>

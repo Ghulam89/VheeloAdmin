@@ -12,12 +12,18 @@ import BASE_URL from '../../../BASE_URL';
 const AddModel = (props) => {
     const apiUrl = process.env.REACT_APP_API_URL;
     const navigate =useNavigate();
+    const [loading,setLoading] = useState(false)
     const [vehicleBrands, setVehicleBrands] = useState([]);
     const [vehicleBrandUid, setVehicleBrandUid] = useState('');
     const [vehicleModelName, setVehicleModelName] = useState('');
 
     const sendDataToRegisterApi = () => {
+       
         if (vehicleBrandUid && vehicleModelName) {
+
+            setLoading(true);
+
+            
             let data = qs.stringify({
                 'brand': vehicleBrandUid,
                 'model': vehicleModelName
@@ -37,7 +43,7 @@ const AddModel = (props) => {
                 .then((response) => {
                     toast.success("Vehicle Model Added Successfully")
 
-
+                    setLoading(false);
                     if(response.data.status==='success'){
 
                         toast.success("Vehicle Model Added Successfully");
@@ -53,6 +59,7 @@ const AddModel = (props) => {
                 });
         } else {
             toast.error("Please fill all the fields")
+
         }
     }
 
@@ -117,11 +124,18 @@ const AddModel = (props) => {
                                             </div>
                                             <div className="form-row"></div>
                                             <div className="form-group"></div>
-                                            <button type="submit" className="btn btn-add"
+                                          
+
+          
+{loading === true ? (                                  <button class="btn btn-add" type="button" disabled>
+  <span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>
+   Loading...
+</button>) : (  <button type="submit" className="btn btn-add"
                                                 onClick={sendDataToRegisterApi}
                                             >
                                                 Add
-                                            </button>
+                                            </button>)}
+
                                         </div>
                                     </div>
                                 </div>

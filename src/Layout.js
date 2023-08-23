@@ -16,9 +16,9 @@ const Layout = () => {
                 <div className='position-fixed' style={{zIndex:'999'}}>
                     <Sidebar width={isopen ? '0px' : '260px'} display={isopen ? 'none' : 'block'} />
                 </div>
-                <div className="container-fluid p-0" style={{marginLeft:isopen?'0px':'260px'}}>
+                <div className="container-fluid  p-0" id='layout_container' style={{marginLeft:isopen?'0px':'260px'}}>
                     <div className="main-panel">
-                        <Navbar Toggle={Toggle} />
+                        <Navbar width={isopen ? '100%' : '81%'} Toggle={Toggle} />
                         <Outlet/>
                         <Footer/>
                     </div>

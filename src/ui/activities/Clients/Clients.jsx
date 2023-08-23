@@ -3,7 +3,14 @@ import "../../../css/main.6120d571.css";
 import axios from "axios";
 import BASE_URL from "../../../BASE_URL";
 import { Link, useNavigate } from "react-router-dom";
+import Loader from "../../../components/Loader/Loader";
 function Clients() {
+
+
+//   
+
+
+  const [loading,setLoading] = useState(true)
   const navigate= useNavigate();
   const [users, setUsers] = useState([]);
   const [blocked, setBlocked] = useState(false);
@@ -11,6 +18,7 @@ function Clients() {
   const [singleChecked, setSingleChecked] = useState(false);
 
   useEffect(() => {
+    
     const fetchData = async () => {
       try {
         const response = await axios.get(`${BASE_URL}user/user`);
@@ -37,7 +45,11 @@ function Clients() {
 
     return (
       <div className={"login-activity"}>
+
+
+
         <div className="container-fluid p-5">
+        {/* <Loader />  */}
           <div className="page-titles">
             <ol className="breadcrumb">
               <li className="breadcrumb-item">
