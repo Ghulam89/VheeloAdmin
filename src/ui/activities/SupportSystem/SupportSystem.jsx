@@ -20,7 +20,7 @@ function SupportSystem() {
               </ol>
             </div>
 
-            {/* <div style={{ display: 'flex', gap: '8px' }}>
+            <div style={{ display: 'flex', gap: '8px' }}>
               <Link
                 to={'/supportSystem'}
                 className="btn btn-danger"
@@ -35,7 +35,7 @@ function SupportSystem() {
               >
                 User Support
               </Link>
-            </div> */}
+            </div>
             <div className="row mt-3">
               <div className="col-lg-12">
                 <Messagebox />
