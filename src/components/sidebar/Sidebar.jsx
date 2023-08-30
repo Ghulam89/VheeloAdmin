@@ -25,8 +25,16 @@ function Sidebar({width,display}) {
 
     return (
         <div className={"Navbar"} id='Sidebar' style={{width:width,display: display}}>
-           
+        
 <div className="dlabnav" >
+
+<div className=' text-center' style={{height:'100px',alignItems:'center',justifyContent:'center',display:'flex'}}>
+            <Link>
+
+            <img  src={require('../../images/main_logo.png')} width="150px" />
+            </Link>
+        </div>
+    
 <div className="scrollbar-container dlabnav-scroll ps">
     <div className="mm-wrapper">
         <ul className="metismenu">
@@ -256,6 +264,10 @@ function Sidebar({width,display}) {
     </div>
 </div>
 </div>
+
+
+
+
         </div>
     );
 }

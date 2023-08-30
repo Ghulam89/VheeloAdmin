@@ -12,16 +12,16 @@ const Layout = () => {
     return (
         <>
             
-            <div className=' container-fluid d-flex p-0 '>
+            <div className=' container-fluid d-flex p-0'>
                 <div className='position-fixed' style={{zIndex:'999'}}>
                     <Sidebar width={isopen ? '0px' : '260px'} display={isopen ? 'none' : 'block'} />
                 </div>
                 <div className="container-fluid  p-0" id='layout_container' style={{marginLeft:isopen?'0px':'260px'}}>
-                    <div className="main-panel">
-                        <Navbar width={isopen ? '100%' : '81%'} Toggle={Toggle} />
+                 
+                        <Navbar width={isopen ? '100%' : '100%'} Toggle={Toggle} />
                         <Outlet/>
                         <Footer/>
-                    </div>
+                   
                 </div>
             </div>
 

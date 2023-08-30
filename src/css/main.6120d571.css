@@ -47602,7 +47602,7 @@ svg.pulse-svg .third-circle {
     box-shadow: 0 0 10px hsla(210, 8%, 51%, .13);
     height: 100%;
     padding-bottom: 0;
-    padding-top: 120px;
+    /* padding-top: 120px; */
     position: absolute;
     top: 0;
     transition: all .2s ease;
@@ -64277,8 +64277,8 @@ html:not([dir=rtl]) .noUi-horizontal .noUi-handle {
     .page-titles {
         
         margin: 0 -30px 30px;
-        padding: 15px 30px;
-        padding-top:119px !important;
+        /* padding: 15px 30px; */
+        /* padding-top:119px !important; */
     }
 }
 

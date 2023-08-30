@@ -11,6 +11,7 @@ import '../usermessage/usermessge.css';
 import '../message/message.css';
 import '../messagebox/messagebox.css'
 import BASE_URL from '../../BASE_URL';
+import { ToastContainer, toast } from 'react-toastify';
 
 function Messagebox() {
   const [socket, setSocket] = useState(null);
@@ -36,19 +37,19 @@ function Messagebox() {
     const newSocket = io(`${BASE_URL}message`);
     setSocket(newSocket);
 
-    newSocket.on('connect', () => {
-      console.log('Connected to user chat ');
-    });
+    // newSocket.on('connect', () => {
+    //   console.log('Connected to user chat ');
+    // });
 
-    newSocket.on('disconnect', () => {
-      console.log('Disconnected from the server.');
-    });
+    // newSocket.on('disconnect', () => {
+    //   console.log('Disconnected from the server.');
+    // });
     
-    return () => {
-      if (newSocket) {
-        newSocket.disconnect();
-      }
-    };
+  //   return () => {
+  //     if (newSocket) {
+  //       newSocket.disconnect();
+  //     }
+  //   };
   }, []);
 
   useEffect(() => {
@@ -119,8 +120,7 @@ function Messagebox() {
         user: ''
       };
       socket.emit('send', newMessage);
-      setRiderMessage(prev => [...prev, newMessage])
-      setMessage(prev => [...prev, newMessage])
+     
       setText('');
 
     }
@@ -131,6 +131,7 @@ function Messagebox() {
   };
   
   useEffect(() => {
+
     const newSocket = io(`${BASE_URL}message`);
     if (newSocket) {
 
@@ -139,6 +140,7 @@ function Messagebox() {
         console.log('message one by one ====>>', data.data, "active rider ===", riderData);
         const riderId = localStorage.getItem("riderID")
         if (Number(riderId) === (data.data.senderId)) {
+          //  toast.success('you have received a new message')
           setRiderMessage(prev => [...prev, data.data]);
           setMessage(prev => [...prev, data.data]);
 
@@ -160,7 +162,7 @@ function Messagebox() {
   return (<div className={"bg-white p-3 rounded-5"}>
 
 
-
+{/* <ToastContainer/> */}
     <div className="row justify-content-center h-100">
       <div className="col-md-4 col-xl-4 chat">
         <div className="card mb-sm-3 mb-md-0 contacts_card">

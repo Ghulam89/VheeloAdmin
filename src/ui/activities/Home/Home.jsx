@@ -11,8 +11,8 @@ class Home extends React.Component {
                 <div id="main-wrapper" className="show"> 
                         <div className="container-fluid p-5 ">
                            
-                            <div className="row   main_dashboard pt-5">
-                                <div className="col-xl-12 p-0 pt-5">
+                            <div className="row   main_dashboard ">
+                                <div className="col-xl-12 p-0">
                                     <div className="row">
                                         <div className="col-sm-3 all_col">
                                             <div className="card">

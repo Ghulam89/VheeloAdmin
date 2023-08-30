@@ -159,13 +159,11 @@ body::-webkit-scrollbar-thumb,
     display: none;
   }
 
-.nav-header{
-  position: fixed;
-  background-color: #00B106 !important;
-}
+
 .dlabnav{
   position:fixed;
   background-color: #00B106 !important;
+  width: 260px !important
 }
 
 .content-body4{

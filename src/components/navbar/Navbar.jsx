@@ -6,41 +6,17 @@ import '../../App.css'
   
 
 
-        return (<div className={"Navbar"} style={{width:width}}>
-            <div className="nav-header">
-                <a className="brand-logo" href="">
-
-                    <img
-                      
-                        alt={"image not found"}
-                        src={require('../../images/main_logo.png')}
-
-                        width="140px"
-                    />
-                </a>
-                <div className="nav-control"  
-                onClick={Toggle}
-                >
-                    <div className="hamburger ">
+        return (<div className={"Navbar1"} style={{width:width}}>
+            
+            
+                <nav className="navbar navbar-expand "style={{height:'100px',backgroundColor:'#fff'}}>
+                  <div className="collapse navbar-collapse justify-content-between align-items-center">
+                    <div className="header-left">
+                    <div className="hamburger "   onClick={Toggle}>
                         <span className="line" />
                         <span className="line" />
                         <span className="line" />
                     </div>
-                </div>
-            </div>
-
-
-            <div className="header">
-              <div className="header-content">
-                <nav className="navbar navbar-expand">
-                  <div className="collapse navbar-collapse justify-content-between">
-                    <div className="header-left">
-                      {/* <div
-                        className="dashboard_bar"
-                        style={{ textTransform: "capitalize" }}
-                      >
-                        Faq
-                      </div> */}
                     </div>
                     <ul className="navbar-nav header-right">
                      
@@ -144,8 +120,8 @@ import '../../App.css'
                     </ul>
                   </div>
                 </nav>
-              </div>
-            </div>
+              
+         
             
          
 

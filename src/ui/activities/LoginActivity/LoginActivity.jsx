@@ -26,7 +26,7 @@ const LoginActivity =  () =>{
       if (email === "admin" && password === "admin") {
     
           navigate('/home')
-          toast.error('Welcome to vheelo admin panel!')
+          toast.success('Welcome to vheelo admin panel!')
       
       } else {
         toast.error('invalid   username or password!')

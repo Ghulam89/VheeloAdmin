@@ -24,10 +24,22 @@ import AddModel from './ui/activities/AddModel/AddModel';
 import AddColor from './ui/activities/AddColor/AddColor';
 import AddFaq from './ui/activities/AddFaq/AddFaq';
 import AddRideCategory from './ui/activities/AddRideCategory/AddRideCategory';
+import BASE_URL from './BASE_URL';
+import { io } from 'socket.io-client';
 class App extends React.Component {
     render() {
+
+        const newSocket = io(`${BASE_URL}message`);
+     
+    
+        newSocket.on('connect', () => {
+          console.log('Connected to user chat ');
+        });
+
+
         return <>
        
+
         <ToastContainer theme='dark'/>
         <Routes>
             <Route path="/" element={<LoginActivity/>} />
