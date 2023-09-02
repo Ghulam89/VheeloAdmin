@@ -9,7 +9,7 @@ import BASE_URL from "../../../BASE_URL";
 const AddRideCategory = (props) => {
 
     const navigate = useNavigate();
-    const [loading,setLoading] = useState(false)
+    const [loading, setLoading] = useState(false)
     const apiUrl = process.env.REACT_APP_API_URL;
     const [name, setName] = useState("");
     const [files, setFiles] = useState([]);
@@ -28,11 +28,11 @@ const AddRideCategory = (props) => {
     };
 
     const sendDataToRegisterApi = async () => {
-        if (name && perKmPrice && enabled) {
+        // if (name && perKmPrice && enabled) {
             console.log(name, perKmPrice, enabled, perMinutePrice, type);
 
             var formdata = new FormData();
-            formdata.append("file", files, "/path/to/file");
+            formdata.append("file", files);
 
             var requestOptions = {
                 method: "POST",
@@ -46,17 +46,17 @@ const AddRideCategory = (props) => {
                     requestOptions
                 );
                 const result = await response.text();
-                console.log(result);
+                console.log(result,'aaaaaaaa');
 
                 setGetFile(JSON.parse(result));
-
-                console.log(getFile);
+                const data1 = JSON.parse(result);
+                console.log(data1?.data, " parse data ============");
 
                 const axios = require("axios");
                 const qs = require("qs");
                 let data = qs.stringify({
                     name: name,
-                    logo: getFile.data,
+                    logo: data1.data,
                     priceKm: perKmPrice,
                     priceMinute: perMinutePrice,
                     type: type,
@@ -75,7 +75,7 @@ const AddRideCategory = (props) => {
                 axios.request(config)
 
                     .then((response) => {
-                        toast.success("Ride Category Add Successfully")
+
 
 
 
@@ -83,7 +83,7 @@ const AddRideCategory = (props) => {
 
                             toast.success("Ride Category Add Successfully");
 
-                            navigate('/vehicleModel')
+                            navigate('/rideCategories')
 
                         }
 
@@ -98,9 +98,9 @@ const AddRideCategory = (props) => {
             } catch (error) {
                 console.log(error);
             }
-        } else {
-            toast.error("Please fill all the fields");
-        }
+        // } else {
+        //     toast.error("Please fill all the fields");
+        // }
     };
 
     return (
@@ -166,33 +166,33 @@ const AddRideCategory = (props) => {
                                             />
                                         </div>
                                         <div className="form-group col-md-6">
-                                            <label>Price Km</label>
+                                            <label>Price Per Km</label>
                                             <input
-                                                type="text"
+                                                type="number"
                                                 className="form-control"
-                                                placeholder="Sargodha ..."
+                                                placeholder="Enter price ..."
                                                 onChange={(e) => setPerKmPrice(e.target.value)}
                                             />
                                         </div>
                                         <div className="form-group col-md-6">
-                                            <label>Price Minute</label>
+                                            <label>Price Per Minute</label>
                                             <input
-                                                type="text"
+                                                type="number"
                                                 className="form-control"
-                                                placeholder="Sargodha ..."
+                                                placeholder="Enter price ..."
                                                 onChange={(e) => setPerMinutePrice(e.target.value)}
                                             />
                                         </div>
                                     </div>
                                     <div className="form-group"></div>
-                                    {loading === true ? (                                  <button class="btn btn-add" type="button" disabled>
-  <span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>
-   Loading...
-</button>) : (  <button type="submit" className="btn btn-add"
-                                                onClick={sendDataToRegisterApi}
-                                            >
-                                                Add
-                                            </button>)}
+                                    {loading === true ? (<button class="btn btn-add" type="button" disabled>
+                                        <span class="spinner-border spinner-border-sm mr-2" role="status" aria-hidden="true"></span>
+                                        Loading...
+                                    </button>) : (<button type="submit" className="btn btn-add"
+                                        onClick={sendDataToRegisterApi}
+                                    >
+                                        Add
+                                    </button>)}
                                 </div>
                             </div>
                         </div>
